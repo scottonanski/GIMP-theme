@@ -13,7 +13,7 @@ There's a couple readme.txt files in the tarball that should get you up and runn
 
 Given how wonky FOSS can be, it might not work for you for whatever reason, but it will make a  great starting point if you want GIMP to look 100x better.
 
-I've included a *.zip file for you Windows peepz.
+I've included a *.zip file for you Windows peepz. And, you're going to need to install the Clearlooks engine or GIMP's gonns crash when you try to use the theme.
 
 Enjoy!
 
