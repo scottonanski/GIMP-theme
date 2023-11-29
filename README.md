@@ -7,13 +7,10 @@ This is a tweaked version of the Orange Hints Theme by migf1 over at;
 
 https://www.deviantart.com/migf1/art/Clearlooks-Gimp-2-10-Color-Hinted-Themes-v1-2-1-846265163
 
-The layout for GIMP that I use is found in the sessionrc file.
-
-There's a couple readme.txt files in the tarball that should get you up and running.
+The theme is found in the gtkrc file & the layout for GIMP that I use is found in the sessionrc file.
 
 Given how wonky FOSS can be, it might not work for you for whatever reason, but it will make a  great starting point if you want GIMP to look 100x better.
 
-I've included a *.zip file for you Windows peepz. And, you're going to need to install the Clearlooks engine or GIMP's gonna crash when you try to use the theme.
 
 Enjoy!
 
