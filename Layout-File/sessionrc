@@ -1,0 +1,127 @@
+# GIMP sessionrc
+# 
+# This file takes session-specific info (that is info, you want to keep
+# between two GIMP sessions).  You are not supposed to edit it manually, but
+# of course you can do.  The sessionrc will be entirely rewritten every time
+# you quit GIMP.  If this file isn't found, defaults are used.
+
+(session-info "toplevel"
+    (factory-entry "gimp-empty-image-window")
+    (position 200 100)
+    (size 640 480))
+(session-info "toplevel"
+    (factory-entry "gimp-single-image-window")
+    (position 0 0)
+    (size 3840 1529)
+    (open-on-exit)
+    (aux-info
+        (left-docks-width "44")
+        (right-docks-width "454")
+        (maximized "yes"))
+    (gimp-toolbox
+        (side left))
+    (gimp-dock
+        (side right)
+        (book
+            (current-page 0)
+            (dockable "gimp-layer-list"
+                (locked)
+                (tab-style name)
+                (preview-size 32)
+                (aux-info
+                    (show-button-bar "true")))
+            (dockable "gimp-vectors-list"
+                (locked)
+                (tab-style name)
+                (preview-size 32)
+                (aux-info
+                    (show-button-bar "true")))
+            (dockable "gimp-channel-list"
+                (locked)
+                (tab-style name)
+                (preview-size 32)
+                (aux-info
+                    (show-button-bar "true"))))
+        (book
+            (position 288)
+            (current-page 0)
+            (dockable "gimp-color-editor"
+                (locked)
+                (tab-style icon)
+                (aux-info
+                    (current-page "GimpColorSelect")))
+            (dockable "gimp-gradient-list"
+                (locked)
+                (tab-style icon)
+                (preview-size 64)
+                (aux-info
+                    (show-button-bar "true")))
+            (dockable "gimp-palette-list"
+                (locked)
+                (tab-style icon)
+                (aux-info
+                    (show-button-bar "true"))))
+        (book
+            (position 654)
+            (current-page 0)
+            (dockable "gimp-brush-grid"
+                (locked)
+                (tab-style icon)
+                (aux-info
+                    (show-button-bar "true")))
+            (dockable "gimp-mypaint-brush-grid"
+                (locked)
+                (tab-style icon)
+                (aux-info
+                    (show-button-bar "true")))
+            (dockable "gimp-dynamics-list"
+                (locked)
+                (tab-style icon)
+                (aux-info
+                    (show-button-bar "true"))))
+        (book
+            (position 928)
+            (current-page 0)
+            (dockable "gimp-tool-options"
+                (locked)
+                (tab-style name)
+                (aux-info
+                    (show-button-bar "true")))))
+    (gimp-dock
+        (side right)
+        (position 223)
+        (book
+            (current-page 0)
+            (dockable "gimp-undo-history"
+                (locked)
+                (tab-style name)
+                (aux-info
+                    (show-button-bar "true")))
+            (dockable "gimp-document-list"
+                (locked)
+                (tab-style name)
+                (aux-info
+                    (show-button-bar "true"))))
+        (book
+            (position 1071)
+            (current-page 0)
+            (dockable "gimp-font-list"
+                (locked)
+                (tab-style automatic)
+                (aux-info
+                    (show-button-bar "true"))))))
+(session-info "toplevel"
+    (factory-entry "gimp-preferences-dialog")
+    (position 1504 512)
+    (size 1014 739))
+(session-info "toplevel"
+    (factory-entry "gimp-image-new-dialog")
+    (position 2102 430))
+
+(hide-docks no)
+(single-window-mode yes)
+(show-tabs yes)
+(tabs-position 1)
+(last-tip-shown 0)
+
+# end of sessionrc

@@ -1,0 +1,738 @@
+# (n++ tab space: 4)
+# ---------------------------------------------------------------------
+# Clearlooks Gimp 2.10 Hinted Themes v1.2.1
+# Variant: Dark SMALL (Orange Hints)
+# Recommended icons: Symbolic | Symbolic-High-Contrast
+# Author: migf1 (2020)
+#
+# The file contain lots of comments, hopefully making it a little easier to mess around with it.
+# That said, I'm not a gtkrc guru (quite the contrary). Chances are that things could have
+# been done much better, and/or that some of those comments may be wrong. 
+#
+# These themes should work with Gimp 2.8 too, but you may also try their older version:
+# https://www.deviantart.com/migf1/art/Clearlooks-Flat-Icons-Gimp-2-8-Themes-v-1-0-1-484289796
+#
+# ---------------------------------------------------------------------
+# LICENSE:
+#
+# This theme is Licensed under GNU GPL 2 or later
+# with an additional Attribution term!
+#
+# Meaning that additionally to all GNU GPL terms, any derivative
+# work must be explicitly identified as such, followed by an easily
+# accessible link to my DeviantArt account:
+# https://www.deviantart.com/migf1
+# ---------------------------------------------------------------------
+# This program is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 2 of the License, or
+# any later version.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this product. If not, see <http://www.gnu.org/licenses/>.
+#
+
+/* ---------------------
+ * Theme starts here
+ * ---------------------
+ */
+
+# *************************
+# GENERIC FONT
+# *************************
+# Some widgets (like the Lock Fixed Aspect Ratio|Size in the properties of the Select Rect/Ellipse tool) do not use "font_name", as defined in the "defualt" style.
+# To fix their font, use this setting.
+# (see also DEFAULT FONT, below)
+###################
+
+gtk-font-name = "Sans 7"				# was "Sans 11"	# font & size for missing styles (the rest use font_name, defined in the "default" style, below)
+
+# *************************
+# HIGHLIGHT COLOR
+# *************************
+# To change the current highlight color, uncomment one of the other lines
+# or replace the hex color-code in the 1st line with any color-code you want.
+# 
+# You can also use X11 color names, WITHOUT prefixing them with the sharp sign
+#
+# For example:
+# 		X11 name: gtk_color_scheme = "hl_color:Teal"
+#		HEX code: gtk_color_scheme = "hl_color:#008080"
+#
+# X11 color names are listed here: https://en.wikipedia.org/wiki/X11_color_names
+#
+###################
+
+gtk_color_scheme = "hl_color:#be5703"		# Current Highlight Color
+#gtk_color_scheme = "hl_color:#3380B3"		# blue
+#gtk_color_scheme = "hl_color:#DC4D12"		# orange
+#gtk_color_scheme = "hl_color:#BE006B"		# pink
+#gtk_color_scheme = "hl_color:#B02222"		# red
+#gtk_color_scheme = "hl_color:#008080"		# teal
+#gtk_color_scheme = "hl_color:#808080"		# gray
+
+
+##################
+# OTHER SYMBOLIC COLORS
+##################
+
+## gtk_color_scheme has been depreciated since GTK 3.8
+gtk_color_scheme = "fg_normal: #CCCCCC\nfg_disabled: #636363\nfg_hover: #FFFFFF"
+gtk_color_scheme = "bg_normal: #3C3C3C\nbg_disabled: #515151\nbg_hover: #202020"
+
+##################
+# OTHER TOP LEVEL SETTINGS
+##################
+
+gtk-menu-popup-delay = 1							# Makes menus pop up faster! Set to 1 instead of 0 to avoid Banshee 1 bug.
+
+gtk-menu-images = 0									# set to 1 if you want icons in front of menu entries
+gtk-button-images = 0									# set to 1 if you want icons in front of button labels
+gtk-auto-mnemonics = 1								# deprecated since GTK 3.10
+#gtk-primary-button-warps-slider = 1			# set to 1 if the slider should move to the point you clicked inside the GtkRange trough (0 moves the slider by a "page" distance)
+gtk-toolbar-style = GTK_TOOLBAR_ICONS	# Whether default toolbars have text only, text and icons, icons only, etc (deprecated since GTK 3.10)
+gtk-application-prefer-dark-theme = 1			# GTK3 ONLY
+
+##################
+# STYLES
+##################
+
+style "default"
+{
+  # *************************
+  # DEFAULT FONT
+  # *************************
+  # Set font_name to a different family and/or size, if text appears too small, or too large on your monitor
+  # (see also GENERIC FONT, above)
+  ##################
+
+  font_name = "Sans 9"								# Uncomment this line and set a different font for GIMP.
+
+  xthickness = 1
+  ythickness = 1
+
+  # Default Style Properties -----------------------------------
+
+  GimpDockbook::tab-border  = 4					# tabs' inner spacing from border (or border's width ? ) (def: 0)
+  GimpDock::font-scale = 0.85						# was 0.8333	# migf1: text of dockable panels/windows
+  Gimp::font-scale = 0.6444	# = 0.8
+  #GimpUnitComboBox::label-scale = 0.8333
+  #GimpScaleComboBox::label-scale = 0.8333
+
+  GtkButton::child-displacement-x = 0			# was 1
+  GtkButton::child-displacement-y = 0			# was 1
+  GtkButton::default-border = {0, 0, 0, 0}
+  GtkButton::default-outside-border = {0, 0, 0, 0}		# +migf1
+  GtkButton::inner-border = {0, 0, 0, 0}			# +migf1
+  GtkButton::focus-line_width = 0					# +migf1
+  GtkButton::focus-padding = 0					# +migf1
+  GtkButton::relief = GTK_RELIEF_NONE		# +migf1 (def: GTK_RELIEF_NORMAL)
+  #GtkButton::image-spacing = 8					# +migf1 (def: 2)
+
+  # see also GtkCheckMenuItem::indicator-size below
+  GtkCheckButton::indicator-size = 16			# check/radio mark (was: 14, def: 13)
+  #GtkRadioButton ::indicator-size = 13			# inherits GtkCheckButton::indicator-size
+
+ /* THESE CAUSE ISSUES
+  GimpUnitComboBox::appears-as-list = 1 	# set to 1 if you want dropdowns to look like lists rather than menus
+  GtkComboBoxEntry::appears-as-list = 1		# GtkComboBoxEntry is deprecated in GTK3
+  GtkComboBoxText::appears-as-list = 1		# same as in GtkComboBox
+  GtkComboBox::appears-as-list = 1				# set to 1 if you want dropdowns to look like lists rather than menus
+*/
+
+  GtkExpander::expander-size = 16				# expander arrow (def: 10)
+
+  # this will be summed with the ythickness of a custom defined GtkMenuItem style
+  GtkMenuBar::internal-padding = 4				# menubar height (def: 1)
+
+  # these may also be extended via x/ythickness, in a custom defined GtkMenu style
+  GtkMenu::horizontal-padding = 0				# left/right
+  GtkMenu::vertical-padding = 0					# top/bottom
+
+  GtkCheckMenuItem::indicator-size = 16		# check/radio mark
+  GtkMenuItem::horizontal-padding = 8		# left/right (affects menubar items too) (def: 3)
+  GtkMenuItem::arrow-scaling = 0.6				# submenu arrow, relative to menu item's font size
+
+  GtkNotebook::arrow-spacing = 6				# tabs' scroll-arrows from left/right of tabs
+
+  GtkPaned::handle-size = 7							# padding between panels, drag handle size (was: 8, def: 5)
+
+  GtkRange::trough-border = 0						# spacing between thumb/steppers & outer trough bevel
+  GtkRange::slider-width = 15						# width of scrollbar or scale thumb
+  GtkRange::stepper-size = 15						# length of step buttons at ends
+
+  GtkScale::slider-length = 18						# slider width/height
+  GtkScale::trough-side-details = 1
+
+  GtkScrollbar::min_slider_length = 30
+  GtkScrollbar::slider-width = 18					# scrollbar width (was: 15, def: ?)
+  GtkScrollbar::activate-slider = 0					# set to 1 if you want sliders to be drawn ACTIVE and with shadow IN while they are dragged
+																	# doesn't seem to do anything with the clearlooks engine
+
+  GtkScrolledWindow::scrollbar-spacing = 1
+  GtkScrolledWindow::scrollbars-within-bevel = 1
+
+  GtkTreeView::expander-size = 14				# tree-expander arrow (see Preferences dialog)
+  GtkTreeView::horizontal-separator = 6		# horz spacing between items (must be even number) (def: 2)
+  GtkTreeView::vertical-separator = 6			# vert spacing between items (must be even number) (def: 2)
+
+  GtkWidget::link-color = shade(1.5, @hl_color)								# unvisited links 
+  GtkWidget::visited-link-color = mix(0.6, @fg_normal, @hl_color)		# visited links 
+
+  #GimpFrame::label-bold = 0
+
+  # Default Color Definitions ----------------------------------
+
+  ## Text on buttons (also button borders in some engines)
+  fg[NORMAL] = "#AAAAAA"
+  fg[PRELIGHT] = "#FFFFFF"
+  fg[SELECTED] = "#FFFFFF"
+  fg[ACTIVE] = "#AAAAAA"
+  fg[INSENSITIVE] = "#ffffff"
+
+  ## Background color of windows and buttons
+  bg[NORMAL] = "#404040"
+  bg[PRELIGHT] = "#bd5a00"
+  bg[SELECTED] = "#bf5703"
+
+
+  ## Text color for text input widgets and lists (/GtkTreeView)
+  text[NORMAL] = "#AAAAAA"
+  text[SELECTED] = "#FFFFFF"
+  text[ACTIVE] = "#FFFFFF"
+  text[INSENSITIVE] = "#AAAAAA"
+
+  ## Background color of text widgets and lists (/GtkTreeView)
+  base[NORMAL] = "#393939"
+  base[PRELIGHT] = "#FFFFFF"
+  base[SELECTED] = "#be5703" 
+  base[ACTIVE] = "#8a2b00"
+  base[INSENSITIVE] = "#2d2d2d"
+
+  # Default Engine Settings ------------------------------------
+
+  engine "clearlooks" 
+  {
+     #contrast = 1.3					#
+     radius = 0.0							# Roundness of widgets # 0.0 fixes half-drawn lock-icons
+     #scrollbar_color   = "#00ff00"
+     #colorize_scrollbar = TRUE		#
+     #reliefstyle = 1						# 0 makes buttons/widgets less raised.
+     menubarstyle = 0				# 0 = flat, 1 = sunken, 2 = flat gradient
+												# (gradient menubar, use tweak in line 66 for flat menubars)
+     menuitemstyle = 0				# 0 = flat, 1 = 3d-ish (gradient), 2 = 3d-ish (button)
+     toolbarstyle = 0					# 0 makes bad toolbars flat.
+     #animation = TRUE				# FALSE disables progressbar animations.
+     #progressbarstyle = 0			# 0 = candy bar, 1 = flat
+     #listviewitemstyle = 1			# 0 = flat, 1 = 3d-ish (gradient)
+     #style = CLASSIC					# style between CLASSIC, GLOSSY, INVERTED and GUMMY
+     #hint = "use-hints"				# Set a hint to disable backward compatibility fallbacks.
+  }
+}
+
+/**
+# testing ToggleButtons that reveal sliders when enabled
+# I cannot make their text normal (instead of being bold)
+style "test" {
+  font_name = "normal"
+ # font_weight = 0
+
+  #GimpFrame::label-bold = 0
+
+  fg[ACTIVE] = "red"
+}
+widget_class "*.<GimpFrame>*<GtkToggleButton>*<GtkLabel>" style:highest "test"
+#class "GimpFrame" style "test"
+*/
+
+style "menu"
+{
+  bg[NORMAL] = "#202020"	# Menus background
+
+  engine "clearlooks" { }	# Linux seems to need it enabled inside EVERY defined style
+}
+
+style "menu-item"
+{
+  xthickness = 4									# adds to: GtkMenuItem::horizontal-padding
+  ythickness  = 4 									# adds to: GtkMenuItem::vertical-padding (see also: GtkMenuBar::internal-padding)
+
+  #fg[NORMAL] = @fg_normal				# Normal color for Text, Submenu Arrows & Icon Borders (but does NOT affect at all Check/Radio Indicators)
+  #fg[PRELIGHT] = @fg_hover				# Mouse-over color for Text, Submenu Arrows & Icon Borders (but does NOT affect at all Check/Radio Indicators)
+  #fg[ACTIVE] = "red"							# ?
+  #fg[SELECTED] = "red"						# ?
+  fg[INSENSITIVE] = "#0f0f0f"		# Color  for inactive Submenu Arrow & Icon Border (but does NOT affect Check/Radio Indicators)
+
+  bg[NORMAL] = shade(0.9, @fg_disabled)	# Text color for menu Separator Lines AND Check/Radio Indicator box Borders
+  #bg[PRELIGHT] = "red"								# ?
+  #bg[ACTIVE] = "red"									# ?
+  bg[SELECTED] = shade(0.9, @hl_color)		# Mouse-over Bg color (does NOT affectt Check/Radio Indicators)
+  #bg[INSENSITIVE] = "red"							#?
+
+  base[NORMAL] = shade(1.3, @bg_normal)	# Bg color for Check/Radio Indicator boxes (not the Borders, not the Check/Radio char)
+  #base[PRELIGHT] = "red"							# ?
+  #base[ACTIVE] = "red"								# ?
+  #base[SELECTED] = "red"							# ?
+  #base[INSENSITIVE] = "red"						# ?
+
+  #text[NORMAL] = shade(1.5, @hl_color)		# Normal color for Indicator char when item is enabled (HAS SIDE EFFECTS, I MOVED IT TO style "check-menu-item")
+  #text[PRELIGHT] = "red"								# ?
+  #text[ACTIVE] = "red"									# ?
+  #text[SELECTED] = "red"								# ?
+  #text[INSENSITIVE] = "red"							# ?
+
+  engine "clearlooks" { }	# Linux seems to need it enabled inside EVERY defined style
+}
+
+style "check-menu-item" = "menu-item"
+{
+  bg[NORMAL] = @bg_hover						# Normal bg color for Indicator box Border
+  base[NORMAL] = @bg_hover						# Bg color for Check/Radio Indicator boxes (not the Borders, not the Check/Radio char)
+  text[NORMAL] = shade(1.5, @hl_color)		# Normal color for Indicator char when item is enabled
+
+  engine "clearlooks" { }	# Linux seems to need it enabled inside EVERY defined style
+}
+
+style "menu-bar"
+{
+  bg[NORMAL] = "#232729" #@bg_hover	# MenuBar background
+  bg[SELECTED] = "#be5703"				# Mouse-over bg color
+
+  engine "clearlooks" { }	# Linux seems to need it enabled inside EVERY defined style
+}
+
+style "tearoff-menu-item"
+{
+  bg[NORMAL] = shade(0.8, @hl_color)
+  bg[SELECTED] = @bg_normal #@bg_disabled
+
+  engine "clearlooks" { }	# Linux seems to need it enabled inside EVERY defined style
+}
+
+/*
+# This needs to be tested, especially the bindings with the double ## below
+# The bindings should precede the notebook binding, without using style:highest 
+style "notebook_bg" {
+
+	bg[NORMAL]  = "green"
+}
+##widget_class "*<GtkNotebook>*<GtkEventBox>" style:highest "notebook_bg"
+#widget_class "*<GtkNotebook>*<GtkDrawingArea>" style:highest "notebook_bg"
+#widget_class "*<GtkNotebook>*<GtkLayout>" style:highest "notebook_bg"
+##widget_class "*<GtkNotebook>*<GtkViewport>" style:highest "notebook_bg"
+##widget_class "*<GtkNotebook>*<GtkScrolledWindow>" style:highest "notebook_bg"
+*/
+
+style "notebook"
+{
+   # These, if used here, they SHOULD be overwritten for combo-boxes & other elements.
+   # Also, regarding their effect in tabs' size, they add to the value of GimpDockbook::tab-border
+   xthickness = 4      											# tab width  (among other things) adds to: GimpDockbook::tab-border
+   ythickness = 4      											# tab height (among other things) adds to: GimpDockbook::tab-border
+
+   #fg[NORMAL] = @hl_color								# Border color of last activated Tab
+   fg[ACTIVE] = @hl_color									# Inactive tab text, Panel selected item
+
+   bg[NORMAL] = @bg_normal							# Active tab background color (INCLUDING the whole pane)
+   bg[ACTIVE] = shade(0.825, @bg_normal)		# Inactive tab background color
+   bg[SELECTED] = @hl_color							# Hint-color at the top of the active tab (the thin stripe)
+
+   text[ACTIVE] = @fg_normal							#?
+
+   base[ACTIVE] = shade(0.9, @hl_color)			# ?
+   base[SELECTED] = @hl_color							# ?
+
+  engine "clearlooks" { }	# Linux seems to need it enabled inside EVERY defined style
+}
+
+style "button"
+{
+  xthickness = 3
+  ythickness  = 3
+
+  fg[NORMAL] = lighter(@hl_color)
+  fg[ACTIVE] = @fg_hover
+  fg[PRELIGHT] = @fg_hover
+
+  bg[NORMAL] = shade(1.5, @bg_normal)						# Normal bg color for buttons
+  bg[PRELIGHT] = @hl_color	#shade(0.8, @bg_normal)		# Mouse-over bg color for buttons
+  bg[ACTIVE] = @hl_color #@bg_hover								# Mouse-depressed bg color for buttons
+  bg[INSENSITIVE] = @bg_disabled									# Bg color of inactive buttons (e.g. the layers Blend mode list, when no image is opened
+
+  engine "clearlooks" { }	# Linux seems to need it enabled inside EVERY defined style
+}
+
+style "toggle-button"
+{
+  fg[ACTIVE] = @fg_normal	# Text only color of enabled check/radio buttons
+  #bg[NORMAL] = @hl_color										# Border color of Check/Radio Indicator Box (or overall Border for toggle-buttons w/o text present)
+  bg[PRELIGHT] = @hl_color #@bg_normal				# Bg color on mouse-over (does NOT affect indicator box)
+  base[NORMAL] = shade(0.825, @bg_normal)			# Normal bg color of Check/Radio indicator box
+  text[NORMAL] = shade(1.3, @hl_color)					# Text color of Check/Radio mark
+
+  #fg[NORMAL] = "red"						# Normal text color
+  #fg[PRELIGHT] = @fg_hover			# Text only color on Mouse-over 
+  #fg[ACTIVE] = mix(0.5, @fg_normal, @hl_color)	# Text only color of enabled check/radio buttons
+  #fg[SELECTED] = "red"					# ?
+  #fg[INSENSITIVE] = "red"				# Text only color when button is unavailable
+
+  #bg[NORMAL] = "red"					# Border color of Check/Radio Indicator Box (or overall Border for toggle-buttons w/o text present)
+														# (BUT it also affects normal Bg color of all "colornotebook-hsvrgb-buttons")
+  #bg[PRELIGHT] = "red"					# Bg color on mouse-over (does NOT affect indicator box)
+  #bg[ACTIVE] = "red"						# Bg color when active (enabled) BUT only for toggle-buttons w/o text present
+  #bg[SELECTED] = "red"					# ?
+  #bg[INSENSITIVE] = @bg_disabled	# For Some Reason, this affects the Bg color of the arrow button for inactive combo-boxes
+														# (it does not seem to do anything on toggle buttons)
+
+  #base[NORMAL] = shade(1.2, @bg_normal)		# Normal bg color of Check/Radio indicator box
+  #base[PRELIGHT] = "red"				# ?
+  #base[ACTIVE] = "red"					# ?
+  #base[SELECTED] = "red"				# ?
+  #base[INSENSITIVE] = "red"			# ?
+
+ #text[NORMAL] = @hl_color			# Text color of Check/Radio mark
+  #text[PRELIGHT] = "red"					# ?
+  #text[ACTIVE] = "red"						# ?
+  #text[SELECTED] = "red"					# ?
+  #text[INSENSITIVE] = "red"				# ?
+
+  engine "clearlooks" { }	# Linux seems to need it enabled inside EVERY defined style
+}
+
+
+## UNUSED ##
+# This used to be a separate style just for the etxt part of active toggle-buttons, but I decided to handle it directly in the "toggle-button" style
+# =========================================================
+/*
+style "toggle-button-label" = "toggle-button"
+{
+  fg[ACTIVE] = shade(1.5, @hl_color)		# Text color of enabled check/radio bauttons
+
+  engine "clearlooks" { }	# Linux seems to need it enabled inside EVERY defined style
+}
+*/
+
+style "toolbox-toggle-button" #= "button"
+{
+
+  ## IMPORTANT:
+  ## if the horizontal spacing for each tool is too small and the tools are set to small icons,
+  ## then even when the toolpalette is narrowed all the way, teh best we get is 2 columns of icons (instead of 1)
+  GtkButton::focus-padding = 4
+  #GtkButton::inner-border = { 6, 6, 6, 6 }		# (alternative to GtkButton::focus-padding) on the ToolPalette each tool leaves a 6+6 pixels space from its adjacent tools
+
+  bg[NORMAL] = lighter(@hl_color)  								# tool's border (lighter when hovered, darkened otherwise)
+  bg[PRELIGHT] = shade(0.65, @hl_color)	# @bg_hover	# background fill on hover
+  bg[ACTIVE] = @hl_color
+  bg[SELECTED] = @hl_color
+  bg[INSENSITIVE] = @bg_disabled
+
+  engine "clearlooks" { }	# Linux seems to need it enabled inside EVERY defined style
+}
+
+style "colornotebook-hsvrgb-buttons" #= "toggle-button"
+{
+  GtkButton::inner-border = {5,5,3,3}	# was: {8,8,1,1}
+
+  fg[NORMAL] = @fg_normal						# normal text color
+  fg[PRELIGHT] = @fg_hover							# text color on mouse-over
+  fg[ACTIVE] = @fg_hover #@fg_normal		# text color when enabled
+
+  bg[NORMAL] = @bg_disabled					# normal bg color
+  bg[PRELIGHT] = @hl_color #@bg_hover		# bg color on mouse-over
+  #bg[ACTIVE] = @hl_color							# bg color when active (enabled)
+
+  engine "clearlooks" { }	# Linux seems to need it enabled inside EVERY defined style
+}
+
+# An entry may or may not have spin-buttons and/or option arrow (e.g. for tags)
+style "entry"
+{
+  xthickness = 3
+  ythickness = 3
+
+  #fg[NORMAL] = @fg_normal					# Fg color of spin-buttons
+  fg[PRELIGHT] = @hl_color						# Mouse-over Fg color of the spin-buttons
+  fg[ACTIVE] = @hl_color							# Mouse-depressed Fg color of the spin-buttons
+  #fg[SELECTED] = @hl_color					# Fg color of text that resides INSIDE the progress-bar (example: Opacity sliders)
+  #fg[INSENSITIVE] = @fg_disabled			# Fg color of the spin-buttons when the displayed setting has already reached its max/min value
+																# OR when the widget is unavailable
+
+  #bg[NORMAL] = @bg_normal				# Bg color of the spin-buttons AND Border color when entry does NOT have spin-buttons
+																# AND shadow of inactive Predefined text (example: filter, tags)
+  #bg[PRELIGHT] = "red"							# ?
+  #bg[ACTIVE] = @hl_color						#  Mouse-depressed Bg color for spin-buttons
+  #bg[SELECTED] = @hl_color					# Bg color of progress bar AND Border color when widget is in focus
+  #bg[INSENSITIVE] = "red"						# ?
+
+  #text[NORMAL] = @fg_normal				# Fg color of text that resides OUTSIDE the progress-bar (example: Opacity sliders)
+																# AND Border color AND Predefined text color (example: filter, tags) when widget is available
+  text[ACTIVE] = shade(0.8, @hl_color) 	# Fg of selected text when widget is out of focus
+  #text[PRELIGHT] = "red" 						# ?
+  #text[SELECTED] = @fg_hover 				# Fg of selected text when widget is in focus
+  #text[INSENSITIVE] = @fg_disabled		# Border color & Predefined text color (example: filter, tags) when widget is unavailable
+
+  base[NORMAL] = @bg_disabled			# Bg fill & border color, for areas OUTSIDE the progress-bar (example: Opacity sliders) - does NOT affect spin-buttons 
+  base[ACTIVE] = shade(1.3, @hl_color) 	# Bg of selected text when widget is out of focus
+  #base[SELECTED] = @hl_color				# Bg of selected text when widget is in focus
+  #base[PRELIGHT] = "red"						# ?
+  #base[INSENSITIVE] = @bg_disabled		# Bg fill & border color, for areas OUTSIDE the progress-bar (example: Opacity sliders) when widget is unavailable - does NOT affect spin-buttons
+
+  engine "clearlooks" { }	# Linux seems to need it enabled inside EVERY defined style
+}
+
+style "spin-button" = "entry"
+{
+  xthickness = 5
+  ythickness = 5
+
+  engine "clearlooks" { }	# Linux seems to need it enabled inside EVERY defined style
+}
+
+style "combo-box"
+{
+  #GtkComboBox::popup-fixed-width = 0
+  GtkComboBox::shadow-type = GTK_SHADOW_NONE		# this makes it look the same with the spin-buttons
+
+  xthickness = 1    								# inner horz-spacing from border (overwrites notebook's inherited value)
+  ythickness = 1    								# inner vert-spacing from border (overwrites notebook's inherited value)
+
+  fg[PRELIGHT] = @fg_hover
+  fg[ACTIVE] = @fg_normal
+
+  bg[NORMAL] = @bg_normal #shade(1.2, @bg_normal)		# bg of arrow's box & fg of widget's outer border 
+  bg[PRELIGHT] = @hl_color					# Mouse-over Bg color for arrow-button only
+  bg[ACTIVE] = @hl_color						# Mouse-depressed Bg color for arrow-button only
+  #bg[SELECTED] = "red"						# Border color of text-only, when in focus
+  #bg[INSENSITIVE] = "red"					# Bg color of inactive arrow-button only
+
+  engine "clearlooks" { }	# Linux seems to need it enabled inside EVERY defined style
+}
+
+# Scrollbar (to be used if engine's colorize_scrollbar is FALSE)
+# =========================================================
+style "scrollbar"
+{
+  fg[NORMAL] = @fg_normal				# Normal text color of arrows
+  fg[PRELIGHT] = @fg_hover					# Mouse-over text color of arrows
+  fg[ACTIVE] = @fg_normal					# Mouse-depressed text color of arrows
+  fg[INSENSITIVE] = @fg_disabled			# Text color of inactive arrows
+
+  bg[NORMAL] = @bg_disabled			# Normal bg color of trough & arrows (thumbs auto-gets a little lighter)
+  bg[PRELIGHT] = @hl_color					# Mouse-over bg color of thumb & arrows
+  bg[ACTIVE] = @hl_color						# Mouse-depressed bg color of thumb & arrows
+  bg[INSENSITIVE] = @bg_disabled		# Bg color of inactive scroll-arrows
+
+  engine "clearlooks" { }	# Linux seems to need it enabled inside EVERY defined style
+}
+
+
+style "statusbar"
+{
+  #ythickness = 2  # (overwrites notebook's ythickness)
+
+  engine "clearlooks" { }	# Linux seems to need it enabled inside EVERY defined style
+}
+
+style "ruler"
+{
+ bg[NORMAL] = "#a8a8a8"  # White background
+ fg[NORMAL] = "#000000"  # Black text/tick marks
+
+  engine "clearlooks" { }	# Linux seems to need it enabled inside EVERY defined style
+}
+
+style "paned"
+{
+  ## https://developer.gnome.org/gtk2/stable/GtkPaned.html
+
+  # GtkPaned::handle-size = 7				# Padding between panes, Drag handle size
+
+  bg[NORMAL] = @bg_hover				# Normal color of the drag-handle icon in the gutter
+  bg[PRELIGHT] = @bg_hover				# Mouse-over Bg color of the darg-handle-separator (gutter)
+
+  engine "clearlooks" { }	# Linux seems to need it enabled inside EVERY defined style
+}
+
+## Hide "you can drop dockable dialogs here"
+style "drop-here-label"
+{
+  fg[NORMAL] = @bg_normal
+
+  engine "clearlooks" { }	# Linux seems to need it enabled inside EVERY defined style
+}
+
+style "expander"
+{
+  ## https://developer.gnome.org/gtk2/stable/GtkExpander.html
+
+  fg[NORMAL] = shade(1.2, @hl_color)			# Normal Fg color of the arrow (stroke)
+
+  bg[PRELIGHT] = @bg_hover #shade(0.1, @hl_color)		# Mouse-over Bg color of BOTH the arrow and the label
+
+
+  base[NORMAL] = shade(1.2, @hl_color)		# Inner fill of arrow
+
+
+  engine "clearlooks" { }	# Linux seems to need it enabled inside EVERY defined style
+}
+
+style "expander-label"
+{
+  ## https://developer.gnome.org/gtk2/stable/GtkExpander.html
+
+  font_name = "bold"
+  fg[NORMAL] = shade(1.2, @fg_disabled) #@fg_disabled #shade(0.7, @hl_color)		# Normal Fg color
+
+  engine "clearlooks" { }	# Linux seems to need it enabled inside EVERY defined style
+}
+
+style "treeview-expander"
+{
+  fg[NORMAL] = shade(1.5, @hl_color)			# Normal Fg color of the arrow (stroke)
+  fg[PRELIGHT] = shade(1.5, @hl_color)		# Mouse-over Fg color of the arrow
+  fg[ACTIVE] = @hl_color								# Mouse-depressed Fg color of the arrow
+
+  bg[ACTIVE] = shade(1.5, @hl_color)			# Mouse-over Inner fill of Expander arrow
+
+  engine "clearlooks" { }	# Linux seems to need it enabled inside EVERY defined style
+}
+
+style "empty-canvas"
+{
+  bg[NORMAL] = "#232729"  		# canvas padding
+  fg[NORMAL] = "#393939"  		# Wilber
+
+  engine "clearlooks" { }	# Linux seems to need it enabled inside EVERY defined style
+}
+
+style "tooltips"
+{
+  xthickness = 15
+  ythickness = 15
+
+  fg[NORMAL] = "#ddd"
+  bg[NORMAL] = "#121212"
+
+  engine "clearlooks" { }	# Linux seems to need it enabled inside EVERY defined style
+}
+
+###########################################################
+# WIDGET-CLASS MATCHES  -- (ORDER MATTERS)
+###########################################################
+
+widget_class "<GtkWidget>*" style "default"
+
+widget_class "*<GtkMenu>" style "menu"
+widget_class "*<GtkMenuItem>*" style "menu-item"
+widget_class "*<GtkMenuBar>*" style "menu-bar"
+widget_class "*<GtkTearoffMenuItem>" style "tearoff-menu-item"
+widget_class "*<GtkCheckMenuItem>" style "check-menu-item"
+
+widget_class "*<GtkNotebook>" style "notebook"					# was: widget_class "*<GtkNotebook>*"
+
+widget_class "*<GtkButton>" style "button"
+widget_class "*<GtkToggleButton>*" style "toggle-button"	# was: widget_class "*<GtkToggleButton>*"
+#widget_class "*<GtkToggleButton>*<GtkLabel>" style "toggle-button-label"
+widget_class "*<GimpToolbox>*<GtkToggleButton>" style "toolbox-toggle-button"
+widget_class "*<GimpColorNotebook>*<GtkRadioButton>*" style "colornotebook-hsvrgb-buttons"
+widget_class "*<GtkEntry>" style "entry"
+widget_class "*<GtkSpinButton>" style "spin-button"
+widget_class "*ComboBox*" style "combo-box"
+
+widget_class "*<GtkScrollbar>*" style "scrollbar"
+#widget_class "*<GtkScrollbar>*" style "scrollbar-with-engine-colorize"
+widget_class "*<GtkStatusbar>*" style "statusbar"
+widget_class "*<GimpRuler>" style "ruler"
+
+widget_class "*<GtkPaned>" style "paned"
+widget_class "*<GimpPanedBox>.<GtkLabel>" style "drop-here-label"
+
+widget_class "*GtkExpander" style "expander"
+widget_class "*<GtkExpander>.<GtkLabel>" style:highest "expander-label"
+
+widget_class "*GtkTreeView" style "treeview-expander"
+
+widget_class "*Canv*" style "empty-canvas"
+
+###########################################################
+# WIDGET-NAME MATCHES
+###########################################################
+
+widget "gtk-tooltip*" style "tooltips"
+
+/* -------------------------------------------------------------
+ * New styles or styles to be overwritten go here
+ * -------------------------------------------------------------
+ */
+
+style "default"
+{
+  GimpDockbook::tab-border = 3					# tabs' inner spacing from border (or border's width ? ) (def: 0)
+  #GimpRuler::font-scale = 0.6444
+
+  GtkCheckButton::indicator-size = 14			# check/radio mark (def: 13)
+
+  GtkExpander::expander-size = 14				# expander arrow (def: 10)
+
+  # this will be summed with the ythickness of a custom defined GtkMenuItem style
+  GtkMenuBar::internal-padding = 2				# menubar height (def: 1)
+
+  GtkCheckMenuItem::indicator-size = 14		# check/radio mark (def: ?)
+  GtkMenuItem::horizontal-padding = 4		# left/right (affects menubar items too) (def: 3)
+
+  GtkPaned::handle-size = 6							# padding between panels, drag handle size (def: 5)
+
+  GtkScrollbar::slider-width = 16					# scrollbar width (def: ?)
+
+  GtkTreeView::horizontal-separator = 4		# horz spacing between items (must be even number) (def: 2)
+  GtkTreeView::vertical-separator = 4			# vert spacing between items (must be even number) (def: 2)
+
+  engine "clearlooks"  { }
+}
+style "menu-item"
+{
+  xthickness = 4			# adds to: GtkMenuItem::horizontal-padding
+  ythickness = 5 			# adds to: GtkMenuItem::vertical-padding (see also: GtkMenuBar::internal-padding)
+									# (see also: GtkMenuBar::internal-padding)
+
+  engine "clearlooks"  { }
+}
+
+style "notebook"
+{
+   # These, if used here, they SHOULD be overwritten for combo-boxes & other elements.
+   # Also, regarding their effect in tabs' size, they add to the value of GimpDockbook::tab-border
+   xthickness = 3			# tab width  (among other things)
+   ythickness = 3			# tab height (among other things)
+
+  engine "clearlooks"  { }
+}
+
+style "button"
+{
+  xthickness = 2 #0
+  ythickness = 2 #1
+
+  engine "clearlooks"  { }
+}
+
+style "colornotebook-hsvrgb-buttons" #= "toggle-button"
+{
+  xthickness = 2
+  ythickness = 1
+
+  engine "clearlooks"  { }
+}
+
+style "toolbox-toggle-button" #= "button"
+{
+  ythickness = 2
+
+  engine "clearlooks"  { }
+}
